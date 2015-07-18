@@ -1,0 +1,231 @@
+@white:#FFF;
+@aqua: #00BFFF;
+@light-gray-background: #EBEEEE;
+@resume-section-gray: #D3D3D3;
+@dark-gray-background: #2B2B2B;
+@button-gray: #444;
+@green: #1FD26A;
+@dark-orange:#FF5A09;
+@med-orange:#F3843E;
+@light-orange:#FF9900;
+@contact-section: #191919;
+@form-group: #373233;
+@default-navbar-text: #9D9D9D;
+@fb-color: #3b5998;
+@linkedin-color: #0077B5;
+@gmail-color: #bb0000;
+
+
+.section {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+}
+
+.scrollable {
+	height: 100%;
+}
+
+.red {
+	background-color: red;
+}
+
+
+.vertical-center{
+	top: 25%;
+	transform: translateY(-25%);
+}
+
+.center-in-container {
+	position:relative;
+	top: 15%;
+	height: 50%;
+	margin-left: auto;
+}
+
+.icon-center {
+	transform: translateX(-50%);
+}
+
+.inline-hrefs {
+	color:inherit;
+	font-weight:bold;
+	&:hover {
+		color:@dark-orange;
+		text-decoration:none;
+		font-weight:bold;
+	}
+}
+
+#home {
+	.section;
+	background-image: url("../images/Background_Grey.jpg");
+	color: white;
+}
+
+#about-me {
+	.section;
+	background-color: @dark-gray-background;
+	color: @white;
+}
+
+span {
+	font-weight:bold;
+}
+
+.height {
+	height: 100px;
+	margin-top: 30px;
+	position:relative;
+}
+
+.chev-down-style {
+	font-size:40px;
+	font-weight: lighter;
+	color:@white;
+	&:hover {color:@dark-orange;}
+}
+
+.social-media-home(@hover-color: @linkedin-blue) {
+	font-size: 30px;
+	font-weight: lighter;
+	color:@white;
+	&:hover {color:@hover-color;}
+	padding: 0em 1em 0em 1em;
+}
+
+.fb-home {
+	.social-media-home(@light-orange);
+}
+
+.linked-in-home {
+	.social-media-home(@light-orange);
+}
+
+.email-home {
+	.social-media-home(@light-orange);
+}
+
+.push-to-front {
+	z-index: 9999;
+	margin:auto;
+}
+
+.section-header {
+	margin-top: 6em;
+}
+
+#about-me p {
+	color: #7A7A7A;
+	font-size: 16px;
+}
+
+.fa-download-style {
+	font-weight: bold;
+	background-color: @button-gray;
+	/*border-color: @button-gray;*/
+	color:@white;
+	&:hover {border-color: @button-gray}
+}
+
+#projects {
+	.section;
+	background-color:@light-gray-background;
+}
+
+#projects .row {
+	font-size: 16px;
+}
+
+.row-spacing-vertical {
+	margin-top: 3em;
+}
+
+#contact {
+	.section;
+	background-color: @contact-section;
+	padding-top: 2em;
+	color: @white;
+}
+
+.fa-envelope-style {
+	font-weight: bold;
+	font-size: 5em;
+}
+
+#contact .form-horizontal {
+	font-size: 16px;
+}
+
+.contact-input {
+	background-color: @form-group;
+	color: @white;
+	border: none;
+	&:focus {
+      background-color: @dark-orange;
+    }
+}
+
+.horizontal-center {
+	display:block;
+	margin:auto;
+}
+
+#resume {
+	background-size: auto auto;
+	background-color:@white;
+	padding-bottom: 6em;
+}
+
+.vertical-bottom-text {
+	vertical-align: bottom;
+}
+
+.progress-bar-text {
+	padding-left: 1em;
+	text-align: left;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+/*
+.navbar-item-hover {
+	&:active {
+		color: @dark-orange !important;
+	}
+	&:hover {
+		color: @white !important;
+	}
+	&:focus {
+
+    }
+}*/
+
+h4 span{
+	border-bottom: 4px solid @dark-orange;
+}
+
+.resume-section-section {
+	border-top: 1px solid @resume-section-gray;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: @default-navbar-text;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: @dark-orange !important;
+  background-color: transparent;
+  border:none;
+}
