@@ -17,16 +17,13 @@
 
 
 .section {
-	height: 100%;
+	min-height: 100%;
 	width: 100%;
-	position: relative;
+	display: block;
 }
 
 body, html {
     height: 100%;
-}
-
-body {
 }
 
 .scrollable {
@@ -113,6 +110,11 @@ span {
 	.social-media-home(@light-orange);
 }
 
+.jumbotron-margin {
+	margin-top: 10em;
+	background:transparent !important;
+}
+
 .push-to-front {
 	z-index: 9999;
 	margin:auto;
@@ -130,9 +132,16 @@ span {
 .fa-download-style {
 	font-weight: bold;
 	background-color: @button-gray;
-	/*border-color: @button-gray;*/
+	border-color: @button-gray;
 	color:@white;
-	&:hover {border-color: @button-gray}
+	margin-top: 2em;
+	text-align: left;
+	&:hover {color:@button-gray !important;}
+}
+
+.fa-download-text {
+	color:@white;
+	&:hover {color:@button-gray !important;}
 }
 
 #projects {
@@ -158,6 +167,7 @@ span {
 .fa-envelope-style {
 	font-weight: bold;
 	font-size: 5em;
+	text-align:center;
 }
 
 #contact .form-horizontal {
@@ -184,6 +194,63 @@ span {
 	padding-bottom: 6em;
 }
 
+@media only screen and (min-width : 320px) and (max-width : 767px) {
+/* Styles */
+	body {
+		height:auto !important;
+	}
+	#resume {
+		text-align:center;
+	}
+	.jumbotron-margin {
+		margin-top: 7em;
+		background:transparent !important;
+	}
+	#about-me p, #about-me h3{
+		text-align:center !important;
+	}
+	#about-me {
+		text-align: center;
+	}
+	#about-me img {
+		margin-bottom: 3em;
+	}
+	#submit {
+		margin: auto !important;
+		text-align: center !important;
+		display: block !important;
+	}
+	#about-me .fa-download-style {
+		margin-bottom: 3em;
+	}
+	#projects p {
+		margin-bottom: 3em;
+	}
+	#envelope-wrapper {
+		text-align: center;
+	}
+}
+
+@media screen (max-width : 767px) {
+/* Styles */
+	body {
+		height:auto !important;
+	}
+	#resume {
+		text-align:center;
+
+	}
+	#about-me {
+		text-align:center !important;
+	}
+
+}
+
+.double-space {
+	line-height: 2em;
+}
+
+
 .vertical-bottom-text {
 	vertical-align: bottom;
 }
@@ -192,7 +259,13 @@ span {
 	padding-left: 1em;
 	text-align: left;
 	font-weight: bold;
-	letter-spacing: 2px;
+	letter-spacing: .125em;
+	line-height: 2.2em;
+	font-size: 1em;
+}
+
+.progress-bar-size {
+	height: 2.2em !important;
 }
 
 /*

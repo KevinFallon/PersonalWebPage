@@ -3,41 +3,23 @@ var express = require('express');
 var nodemailer = require("nodemailer");
 var app=express();
 var serverVars = require('./serverVars');
-// var myServer = http.createServer(function (request, response) {
-//   response.writeHead(200, {'Content-Type': 'text/plain'});
-//   response.end('Hello World\n');
-// }).listen(8124, "127.0.0.1");
+var fs = require('fs');
 
-// console.log('Server running at http://127.0.0.1:8124/');
-
-// myServer.on('connection', function (stream) {
-//   console.log('someone connected!');
-// });
-
-// function httpRequestTest(callback) {
-// 	return http.get({})
-// }
-
-console.log(serverVars.myUser);
-// console.log(serverVars);
 var generator = require('xoauth2').createXOAuth2Generator({
-    user: serverVars.myUser,
-    clientId: serverVars.myClientId,
-    clientSecret: serverVars.myClientSecret,
-    refreshToken: serverVars.myRefreshToken,
+    user: serverVars.mySendingEmail,
+    clientId: serverVars.kfwebsiteClientId,
+    clientSecret: serverVars.kfwebsiteClientSecret,
+    refreshToken: serverVars.kfwebsiteRefreshToken,
 });
-
-// listen for token updates
-// you probably want to store these to a db
-// generator.on('token', function(token){
-//     console.log('New token for %s: %s', token.user, token.accessToken);
-// });
 
 app.get('/',function(request,response) {
     response.sendfile('../html/main.html');
 });
 
-app.get('/send',function(request,resonse){
+app.get('/send',function(request,response){
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     var mailOptions = {
         from: serverVars.mySendingEmail,
         to: serverVars.myEmail,
@@ -58,23 +40,15 @@ app.get('/send',function(request,resonse){
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
             console.log(error);
-            //resp.end("error");
+            response.end("error");
         }else{
             console.log("Message sent: " + info.response);
-            //resp.end("sent");
+            response.end("sent");
         }
+        transporter.close();
     });
 });
 
 app.listen(3000,function(){
     console.log("Express Started on Port 3000");
 });
-
-
-// // send mail
-// transporter.sendMail({
-//     from: 'kevinfallonwebsite@gmail.com',
-//     to: 'kfallon2010@gmail.com',
-//     subject: mailOptions.subject,
-//     text: mailOptions.text
-// });

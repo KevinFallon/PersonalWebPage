@@ -109,19 +109,39 @@ $(document).ready(function () {
     });
 
     var from,to,subject,text;
-    $("#submit").click(function(){
+    $("#submit").click(function(e){
+        e.preventDefault();
         name=$("#inputName").val(); 
         email=$("#inputEmail3").val();
         subject=$("#inputSubject").val();
         text=$("#inputMessage").val();
-        // $("#inputMessage").text("Sending E-mail...Please wait");
-        $.get("http://localhost:3000/send",{name:name, email:email, subject:subject, text:text},function(data){
-            if(data == "sent")
-            {
-                $("#inputMessage").empty().html(" Email is been sent at "+to+" . Please check inbox !");
-            }
-
-        });
+        var alertArea = document.getElementById("alert-area");
+        var alertDiv = document.createElement('div');
+        alertDiv.setAttribute("id", "contact-alert-box");
+        alertDiv.setAttribute('role', 'alert');
+        if (name === "" || email === "" || subject === "" || text === "") {
+            //alert("error!");
+            alertDiv.setAttribute("class", 'alert alert-danger col-sm-offset-2 col-sm-9');
+            alertDiv.innerHTML = "Please fill in all fields!";
+            //var alertDiv = '<div class="alert alert-danger" role="alert">Please fill in all the boxes!</div>';
+            //alertArea.appendChild(alertDiv);
+        } else {
+            // $("#inputMessage").text("Sending E-mail...Please wait");
+            $.get("http://kevinfallon.me:3000/send",{name:name, email:email, subject:subject, text:text},function(data){
+                if(data == "sent")
+                {
+                    $("#inputMessage").empty().html(" Email is been sent at "+to+" . Please check inbox !");
+                }
+            });
+            alertDiv.setAttribute("class", 'alert alert-success col-sm-offset-2 col-sm-9');
+            alertDiv.innerHTML = "Thank you for your email!";
+            $("#inputName").val(""); 
+            $("#inputEmail3").val("");
+            $("#inputSubject").val("");
+            $("#inputMessage").val("");
+        }
+        $("#contact-alert-box").remove();
+        alertArea.appendChild(alertDiv);
     });
 });
 
